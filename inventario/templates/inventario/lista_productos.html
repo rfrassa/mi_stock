@@ -1,27 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de Stock</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
 </head>
 <body>
-    <h1>Lista de Productos</h1>
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li class="{{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
+    <h1>{{ titulo }}</h1>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <table border="1">
         <thead>
             <tr>
@@ -49,5 +42,6 @@
         {{ form.as_p }}
         <button type="submit">Guardar Movimiento</button>
     </form>
+    <p><a href="{% url 'historial_movimientos' %}">Ver historial de movimientos</a></p>
 </body>
 </html>
