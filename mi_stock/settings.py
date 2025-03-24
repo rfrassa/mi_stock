@@ -63,10 +63,15 @@ WSGI_APPLICATION = 'mi_stock.wsgi.application'
 
 # Database
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'sqlite:///' + str(BASE_DIR / 'db.sqlite3')),
-        conn_max_age=600
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'RF.alvlgeddl',
+        'HOST': 'db.bchonczxaqajjivpvpaa.supabase.co',
+        'PORT': '5432',
+        'CONN_MAX_AGE': 600,
+    }
 }
 
 # Password validation
